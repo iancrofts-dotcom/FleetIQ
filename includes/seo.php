@@ -8,7 +8,8 @@ $pageDescription = $pageDescription ?? 'Fleet management software for UK busines
 <meta property="og:description" content="<?= escape($pageDescription) ?>">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
-<?php if (SITE_URL !== ''): ?>
+<?php if (!empty($notFoundPage)): ?><meta name="robots" content="noindex, follow"><?php endif; ?>
+<?php if (SITE_URL !== '' && empty($notFoundPage)): ?>
 <link rel="canonical" href="<?= escape(rtrim(SITE_URL, '/') . '/' . ($pagePath ?? '')) ?>">
 <meta property="og:url" content="<?= escape(rtrim(SITE_URL, '/') . '/' . ($pagePath ?? '')) ?>">
 <?php endif; ?>

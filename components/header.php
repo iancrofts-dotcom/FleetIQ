@@ -4,15 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= escape($pageTitle ?? 'FleetIQ | Fleet Management Software UK') ?></title>
+    <?php if (!empty($notFoundPage)): ?><base href="<?= escape(site_base_path()) ?>"><?php endif; ?>
     <?php require __DIR__ . '/../includes/seo.php'; ?>
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/site.css">
     <?php if (isset($productPage)): ?><link rel="stylesheet" href="assets/css/product.css"><?php endif; ?>
     <?php if (isset($commercialPage)): ?><link rel="stylesheet" href="assets/css/commercial.css"><?php endif; ?>
+    <?php if (isset($legalPage)): ?><link rel="stylesheet" href="assets/css/legal.css"><?php endif; ?>
     <script src="assets/js/site.js" defer></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="<?= !empty($notFoundPage) ? '404.php#main' : '#main' ?>">Skip to content</a>
 <header class="site-header">
     <div class="container header-inner">
         <a href="./" class="brand-link" aria-label="FleetIQ home"><?php brand(); ?></a>

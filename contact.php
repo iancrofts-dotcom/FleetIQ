@@ -38,7 +38,7 @@ require __DIR__ . '/components/header.php';
                 <?php endforeach; ?>
                 <div class="form-field form-field-wide"><label for="message">What would you like help managing? <span class="optional">(optional)</span></label><textarea id="message" name="message" rows="5" maxlength="4000" aria-describedby="message-hint<?= isset($errors['message']) ? ' message-error' : '' ?>"<?= isset($errors['message']) ? ' aria-invalid="true"' : '' ?>><?= escape($values['message']) ?></textarea><p class="field-hint" id="message-hint">Up to 4,000 characters. Please do not include sensitive driver or vehicle documents.</p><?php if (isset($errors['message'])): ?><p class="field-error" id="message-error"><?= escape($errors['message']) ?></p><?php endif; ?></div>
                 </div>
-                <p class="form-privacy">Your details will only be used to respond to your FleetIQ enquiry. <a href="#privacy" data-dialog="privacy">Privacy notice</a> <span>The full notice is awaiting completion before launch.</span></p>
+                <p class="form-privacy">Your details will only be used to respond to your FleetIQ enquiry. <a href="privacy.php">Privacy notice</a> </p>
                 <button class="button" type="submit">Request a FleetIQ Demo <?php icon('arrow'); ?></button>
             </form>
         <?php endif; ?>

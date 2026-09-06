@@ -4,7 +4,7 @@ require __DIR__ . '/components/icons.php';
 $commercialPage = true;
 $pagePath = 'about.php';
 $pageTitle = 'About FleetIQ | Practical UK Fleet Management Software';
-$pageDescription = 'FleetIQ is being developed around practical UK fleet operations, bringing vehicle, driver, compliance, document and workshop information together.';
+$pageDescription = 'FleetIQ is designed around practical UK fleet operations, bringing vehicle, driver, compliance, document and workshop information together.';
 require __DIR__ . '/components/header.php';
 ?>
 <main id="main" class="commercial-page" tabindex="-1">
@@ -16,7 +16,7 @@ require __DIR__ . '/components/header.php';
     </div></section>
     <section class="section"><div class="container editorial-layout">
         <div><p class="eyebrow">WHY FLEETIQ</p><h2>Fleet work is connected.<br>The information should be too.</h2></div>
-        <div><p>Important dates can sit in separate calendars. Vehicle records can be kept apart from workshop activity, while driver documents need another spreadsheet. A completed inspection may leave a repair to be followed up somewhere else.</p><p>That separation makes it harder to see what needs attention. FleetIQ is being developed around these practical requirements: a connected operational workspace where related records and work stay together.</p></div>
+        <div><p>Important dates can sit in separate calendars. Vehicle records can be kept apart from workshop activity, while driver documents need another spreadsheet. A completed inspection may leave a repair to be followed up somewhere else.</p><p>That separation makes it harder to see what needs attention. FleetIQ is designed around these practical requirements: a connected operational workspace where related records and work stay together.</p></div>
     </div></section>
     <section class="section commercial-light"><div class="container">
         <div class="section-heading"><div><p class="eyebrow">BUILT FOR REAL FLEET WORK</p><h2>Responsibilities overlap.<br>Keep the context.</h2></div><p>In small-to-medium UK fleet operations, the same people often look after vehicles, drivers, documents and repairs. FleetIQ brings those areas into view together.</p></div>

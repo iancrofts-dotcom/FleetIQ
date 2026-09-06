@@ -21,7 +21,7 @@
       if (!link) return;
       closeMenu();
       // Move keyboard focus out of a menu that is about to become hidden.
-      if (!link.dataset.dialog && link.hash && link.pathname === location.pathname) {
+      if (link.hash && link.pathname === location.pathname) {
         const target = document.getElementById(link.hash.slice(1));
         if (target) {
           if (!target.hasAttribute('tabindex')) {
@@ -40,7 +40,7 @@
   }
 
   document.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+    if (event.key !== 'Escape') return;
     if (product?.open) {
       closeProduct();
       product.querySelector('summary').focus();
@@ -57,33 +57,6 @@
     if (!product.contains(event.relatedTarget)) closeProduct();
   });
 
-  // Visible fallback sections become native dialogs only when supported.
-  if (typeof HTMLDialogElement !== 'undefined' && typeof HTMLDialogElement.prototype.showModal === 'function') {
-    document.querySelectorAll('.notice-panel').forEach(panel => {
-      const dialog = document.createElement('dialog');
-      for (const attribute of panel.attributes) dialog.setAttribute(attribute.name, attribute.value);
-      dialog.append(...panel.childNodes);
-      panel.replaceWith(dialog);
-      let opener;
-      document.querySelectorAll(`[data-dialog="${dialog.id}"]`).forEach(link => {
-        link.setAttribute('aria-haspopup', 'dialog');
-        link.addEventListener('click', event => {
-          event.preventDefault();
-          opener = link;
-          dialog.showModal();
-        });
-      });
-      dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-      dialog.addEventListener('close', () => {
-        const visibleOpener = opener && opener.getClientRects().length > 0;
-        (visibleOpener ? opener : toggle)?.focus({ preventScroll: true });
-      });
-      dialog.addEventListener('click', event => {
-        const rect = dialog.getBoundingClientRect();
-        if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
-      });
-    });
-  }
   document.documentElement.classList.add('js');
   // PRG returns to #enquiry; announce the server result after fragment navigation.
   window.addEventListener('pageshow', () => {

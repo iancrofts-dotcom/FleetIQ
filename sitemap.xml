@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Deployment template only. Replace https://example.invalid with the confirmed
-     SITE_URL origin before publishing or submitting this sitemap. -->
+<!-- Source reference only: tools/build-public.php generates the deployed sitemap
+     from FLEETIQ_SITE_URL. Do not upload this unconfigured source template. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://example.invalid/</loc></url>
   <url><loc>https://example.invalid/features.php</loc></url>
@@ -12,4 +12,6 @@
   <url><loc>https://example.invalid/mobile.php</loc></url>
   <url><loc>https://example.invalid/about.php</loc></url>
   <url><loc>https://example.invalid/contact.php</loc></url>
+  <url><loc>https://example.invalid/privacy.php</loc></url>
+  <url><loc>https://example.invalid/terms.php</loc></url>
 </urlset>

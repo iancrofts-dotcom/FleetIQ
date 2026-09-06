@@ -1,3 +1,12 @@
+# Current Phase 4 validation — 6 September 2026
+
+This section supersedes earlier environment and placeholder-dialog notes below. See [PHASE4-REPORT.md](PHASE4-REPORT.md) for the requested 20-point report and [DEPLOYMENT.md](DEPLOYMENT.md) for deployment steps.
+
+Final continuation results: 32 PHP files lint clean; 48 security checks, 36 HTTP checks, 10 isolated SMTP checks and 52 package/configuration/error checks pass. Chrome actual-PHP validation covers 338 page/width cases, 26 keyboard cases, 468 navigation clicks and 10 form-error layouts. No measured overflow, conceptual visual clipping, tested layout-group overlap, broken internal links/assets, duplicate IDs or heading-level skips. All 12 configured canonicals/OG URLs and sitemap entries pass; direct/nested 404s are non-indexable and return 404. Expected 404 console response only. Build guards and copied-source hashes pass. No approved layout changes were needed.
+
+The separate 40-file preparation copy is `build/public-preparation/`; exact manifest: `build/package-manifest.txt`. Its sitemap is intentionally empty and robots disallows crawling until a confirmed-domain rebuild. No external email, upload, commit or push occurred. Host/domain, authorised sender/mail delivery, operator/provider details and actual server protections remain unverified. Firefox/Safari, real devices and a full assistive-technology/zoom audit remain outstanding; attempted Edge automation did not expose a debugging endpoint. Full evidence and limitations are in the report.
+
+---
 # Homepage refinement validation
 
 ## Phase 3 — About and Contact / Book a Demo — 6 September 2026
