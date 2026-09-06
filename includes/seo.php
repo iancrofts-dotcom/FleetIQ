@@ -1,0 +1,14 @@
+<?php
+$pageTitle = $pageTitle ?? 'FleetIQ | Fleet Management Software UK';
+$pageDescription = $pageDescription ?? 'Fleet management software for UK businesses. Bring vehicles, drivers, compliance, documents and workshop tasks together with FleetIQ on Windows, Web and Android.';
+?>
+<meta name="description" content="<?= escape($pageDescription) ?>">
+<meta name="theme-color" content="#0b1e32">
+<meta property="og:title" content="<?= escape($pageTitle) ?>">
+<meta property="og:description" content="<?= escape($pageDescription) ?>">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<?php if (SITE_URL !== ''): ?>
+<link rel="canonical" href="<?= escape(rtrim(SITE_URL, '/') . '/') ?>">
+<meta property="og:url" content="<?= escape(rtrim(SITE_URL, '/') . '/') ?>">
+<?php endif; ?>
