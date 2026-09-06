@@ -31,17 +31,19 @@ Conceptual product views and illustrative data remain labelled. No Pricing, Logi
 
 ## TEST DEPLOYMENT
 
+Current confirmed **temporary** domain: `http://fleetiq.fwh.is/`. The rebuilt 40-file upload package is `build/public-preparation/`; see [DEPLOYMENT.md](DEPLOYMENT.md) for the exact setup. SSL is unconfirmed, no HTTPS redirect is enabled, and the mail sender remains unset. This temporary value must be replaced before production.
+
 ### 1. Confirm the host and private configuration
 
-The code minimum is PHP 8.1; deploy on the latest patched PHP 8.4 release (the branch tested locally), with HTTPS, sessions and private writable session/log storage. PHP 8.1 is no longer supported; see [PHP supported versions](https://www.php.net/supported-versions.php). Confirm the actual domain and any installation subdirectory. Do not derive the public URL from a visitor's Host header.
+The code minimum is PHP 8.1; deploy on the latest patched PHP 8.4 release (the branch tested locally), with sessions and private writable session/log storage. Use HTTPS for production; the temporary HTTP test exception is documented above. PHP 8.1 is no longer supported; see [PHP supported versions](https://www.php.net/supported-versions.php). Do not derive the public URL from a visitor's Host header.
 
-**One base URL setting: `FLEETIQ_SITE_URL`.** Use the same value when generating the package and running it on the host. It controls canonicals, Open Graph URLs, nested 404 navigation, generated sitemap URLs and the robots sitemap reference. Use the confirmed HTTPS base URL, including an installation subdirectory if applicable, without a trailing slash. Changing it requires rebuilding sitemap/robots and server error routing. No real domain is assumed in source.
+**One base URL setting: `FLEETIQ_SITE_URL`.** Use the same value when generating the package and running it on the host. It controls canonicals, Open Graph URLs, nested 404 navigation, generated sitemap URLs and the robots sitemap reference. The central temporary fallback in `includes/config.php` is `http://fleetiq.fwh.is/`, normalised without its trailing slash. An environment/private setting overrides it; an explicitly empty private setting supports local-only metadata. Changing domains or schemes requires rebuilding sitemap/robots and server error routing. Do not edit URLs page by page.
 
 Configure these environment variables in the hosting control panel's PHP/application environment, then restart/reload PHP if required:
 
 | Setting | Value |
 | --- | --- |
-| `FLEETIQ_SITE_URL` | Confirmed HTTPS base URL |
+| `FLEETIQ_SITE_URL` | Defaults to the temporary `http://fleetiq.fwh.is/`; replace for SSL/production |
 | `FLEETIQ_DEMO_RECIPIENT` | Defaults to `iancrofts@live.co.uk`; retain for test enquiries |
 | `FLEETIQ_DEMO_FROM` | Fixed mailbox authorised by the actual hosting/mail provider; no invented default |
 | `FLEETIQ_DEMO_TRANSPORT` | `mail`, or `disabled` to suspend delivery |
@@ -53,13 +55,12 @@ Configure these environment variables in the hosting control panel's PHP/applica
 From the repository, set the confirmed URL in your shell or private config, then run:
 
 ```powershell
-$env:FLEETIQ_SITE_URL = 'https://YOUR-CONFIRMED-DOMAIN'
-php tools/build-public.php C:\path\to\new-fleetiq-public
+php tools/build-public.php build/public-test-next --allow-http
 ```
 
-The displayed domain is an instruction placeholder, not a real FleetIQ domain. The destination must be a **new directory outside the repository or beneath its dedicated `build/` directory**, with an existing parent. The builder never deletes or overwrites a directory. It copies only the files in `tools/public-files.php`, generates `sitemap.xml` and `robots.txt` from the configured URL, and includes Apache access/error rules and conservative `.user.ini` settings. The twelve content routes are in the sitemap; 404 is excluded. The source sitemap/robots are reference templates and must not be uploaded directly.
+`--allow-http` explicitly permits the confirmed HTTP test domain; omit it after SSL/production HTTPS is configured. The destination must be a **new directory outside the repository or beneath its dedicated `build/` directory**, with an existing parent. The builder never deletes or overwrites a directory. It copies only the files in `tools/public-files.php`, generates `sitemap.xml` and `robots.txt` from the configured URL, and includes Apache access/error rules and conservative `.user.ini` settings. The twelve content routes are in the sitemap; 404 is excluded. Source sitemap/robots now also reflect the test URL; always deploy the generated package so these match its configuration.
 
-While the domain is unknown, `php tools/build-public.php build/public-preparation --prepare` produces a local preparation copy. The current copy is at `build/public-preparation/`; its exact manifest is in `build/package-manifest.txt`, outside the public folder. Preparation mode deliberately generates an empty sitemap and crawl-disallowed robots without a fake domain. **Do not upload this preparation copy.** Once the domain is known, set `FLEETIQ_SITE_URL` and run `php tools/build-public.php build/public-test` without `--prepare`, then upload that new package. Build output is ignored by Git.
+The current ready-to-upload HTTP test copy is `build/public-preparation/`; its exact manifest is `build/package-manifest.txt`, outside the public folder. It was rebuilt without `--prepare`, with a populated sitemap and crawl-allowed robots. The optional `--prepare` mode is only for domain-free staging and deliberately produces an empty sitemap and crawl-disallowed robots. Build output is ignored by Git; upload only the current package contents, not backups beside it.
 
 Upload the **contents of this generated package**, including its hidden `.htaccess` and `.user.ini` files, into the site's document root. Use appropriate host ownership and permissions (typically directories 755 and public files 644); private configuration, logs and sessions must remain private. The local package root is created with restrictive permissions, so adjust its permissions if using it directly as a server document root.
 
@@ -82,7 +83,7 @@ These complement the provider's existing secure PHP-FPM handler (which must chec
 
 At PHP/host level set `display_errors=Off`, `display_startup_errors=Off`, `log_errors=On`, and `expose_php=Off`. The generated `.user.ini` is for CGI/FastCGI hosts that support it; other hosts require equivalent PHP settings in their control panel/php.ini. Set `error_log` and `session.save_path` to private locations outside the document root. Verify PHP can write there and configure log rotation/access and session cleanup. The application adds a generic buffered 500 response for runtime exceptions/fatal errors and logs error type/location without exception messages or enquiry bodies. PHP startup and entry-point parse errors occur before this boundary; host settings are essential.
 
-Use HTTPS throughout and configure the host to redirect HTTP to HTTPS. PHP must receive trustworthy HTTPS state so the session cookie receives `Secure`; do not trust arbitrary forwarded headers from clients. HTTPS termination/proxy settings are host-specific. Enable HSTS only after the domain and all affected HTTPS services are verified; the application deliberately does not assume that setup.
+For this temporary HTTP test host, SSL remains unconfirmed: do not force HTTPS redirects or HSTS. Use synthetic enquiry data while testing over HTTP. Once SSL is verified, change the central URL to HTTPS at build time and runtime, rebuild, verify HTTPS pages/assets/forms, and only then enable a host-level redirect. PHP must receive trustworthy HTTPS state so the session cookie receives `Secure`; do not trust arbitrary forwarded headers from clients. HTTPS termination/proxy settings are host-specific.
 
 Application responses set CSP restricting scripts/styles and form submission to the same origin, `nosniff`, a restrictive referrer policy, same-origin framing and permissions restrictions. No inline script/style exceptions or external CDN permissions are needed. Static-file headers and host-generated error responses remain the host's responsibility.
 
@@ -108,7 +109,7 @@ Only Contact uses `fleetiq_enquiry`, a necessary browser-session cookie with Htt
 
 - Open all twelve pages; follow logo, Product, Features, About, Contact, demo and legal links. Check assets and browser console.
 - Check an unknown **nested** URL and direct `404.php`: status 404, branded page, correct links, no canonical, noindex. Request `includes/product-pages.json`, `components/header.php`, `.user.ini`, `.git/HEAD`, `tests/enquiry-test.php`, `README.md` and archives: none may expose contents.
-- Inspect canonicals and OG URLs, generated sitemap/robots and HTTPS redirects against the confirmed deployment base URL. No reserved/local/test URLs should remain in deployed metadata.
+- Inspect canonicals and OG URLs and generated sitemap/robots against the confirmed deployment base URL. Current test metadata must use `http://fleetiq.fwh.is/`, with no local/reserved URLs. Replace the temporary domain before production. Verify HTTPS redirects only after SSL is confirmed and they have deliberately been enabled.
 - Verify private logs work, PHP errors stay generic and sessions survive redirects. Check cookie flags under actual HTTPS. Do not deliberately break the public service to test this; use an isolated test instance.
 - Run enquiry validation, invalid CSRF/honeypot, mail failure and authorised end-to-end acceptance/receipt checks. Confirm error associations, retained values, success confirmation and no duplicate sends on refresh.
 - Check the requested desktop/mobile widths, keyboard, zoom and reduced motion. Test Firefox, Safari and real Android/iOS devices as well as Chrome.
@@ -122,4 +123,4 @@ php tests/enquiry-test.php
 Get-ChildItem -Recurse -Filter *.php | ForEach-Object { php -l $_.FullName }
 ```
 
-This repository is ready for end-to-end testing once the actual host, base URL, operator/provider details and authorised sender are configured and the deployment checks above pass. Local tests do not establish real-host mail delivery, legal completeness or cross-browser/device coverage.
+The current package is ready for upload to the confirmed HTTP test domain with mail safely unconfigured. Real delivery testing still requires an authorised sender and working host mail. Confirm operator/provider details before public enquiry collection. Local tests do not establish real-host mail delivery, SSL availability, legal completeness or cross-browser/device coverage.

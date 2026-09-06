@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Source reference only. tools/build-public.php adds the configured Sitemap URL.
+Sitemap: http://fleetiq.fwh.is/sitemap.xml

@@ -1,5 +1,7 @@
 # Phase 4 completion report — 6 September 2026
 
+**Subsequent test-domain update:** the user has now confirmed `http://fleetiq.fwh.is/`. `build/public-preparation/` has been rebuilt as a 40-file, ready-to-upload HTTP test package with 12 canonical/OG/sitemap URLs and crawl-allowed robots. Sender remains unset; SSL is unconfirmed and no HTTPS redirects are added. See `DEPLOYMENT.md` and the latest `VALIDATION.md` entry. The original report below is historical; its unknown-domain/upload-blocked statements are superseded by this update.
+
 Local implementation and Chrome validation pass. The website is prepared for test deployment, but the current preparation package is **not ready to upload** until the actual domain, host and authorised mail sender are configured and a final package is rebuilt. Approved pages were not redesigned. No external email, upload, commit or push was performed.
 
 1. **Files created.** This continuation created `.gitignore`, `DEPLOYMENT.md`, `PHASE4-REPORT.md`, `build/package-manifest.txt` and the 40-file `build/public-preparation/` copy. Earlier Phase 4 additions already present were `privacy.php`, `terms.php`, `404.php`, `assets/css/legal.css`, `includes/bootstrap.php`, and `tools/{build-public.php,config.example.php,public-files.php,router.php}`. QA scripts/results/screenshots are in `%TEMP%/fleetiq-phase4-final-qa`, outside the public package. The pre-existing `README.zip` was left untouched and excluded.

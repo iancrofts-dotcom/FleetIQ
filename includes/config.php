@@ -25,7 +25,9 @@ $fleetSetting = static function (string $name, string $default = '') use ($fleet
     }
     return $value;
 };
-$fleetUrl = rtrim($fleetSetting('FLEETIQ_SITE_URL'), '/');
+// TEMPORARY public test domain, not the production domain. Override centrally when
+// SSL/production is confirmed. An explicitly empty setting supports local-only SEO.
+$fleetUrl = rtrim($fleetSetting('FLEETIQ_SITE_URL', 'http://fleetiq.fwh.is/'), '/');
 if ($fleetUrl !== '' && (!filter_var($fleetUrl, FILTER_VALIDATE_URL) || !in_array(parse_url($fleetUrl, PHP_URL_SCHEME), ['http', 'https'], true) || preg_match('/[\x00-\x20\x7f]/', $fleetUrl) || parse_url($fleetUrl, PHP_URL_USER) !== null || parse_url($fleetUrl, PHP_URL_PASS) !== null || parse_url($fleetUrl, PHP_URL_QUERY) !== null || parse_url($fleetUrl, PHP_URL_FRAGMENT) !== null)) {
     throw new RuntimeException('Invalid site URL.');
 }

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Source reference only: tools/build-public.php generates the deployed sitemap
-     from FLEETIQ_SITE_URL. Do not upload this unconfigured source template. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.invalid/</loc></url>
-  <url><loc>https://example.invalid/features.php</loc></url>
-  <url><loc>https://example.invalid/fleet-vehicles.php</loc></url>
-  <url><loc>https://example.invalid/drivers-compliance.php</loc></url>
-  <url><loc>https://example.invalid/workshop.php</loc></url>
-  <url><loc>https://example.invalid/documents-reminders.php</loc></url>
-  <url><loc>https://example.invalid/reports.php</loc></url>
-  <url><loc>https://example.invalid/mobile.php</loc></url>
-  <url><loc>https://example.invalid/about.php</loc></url>
-  <url><loc>https://example.invalid/contact.php</loc></url>
-  <url><loc>https://example.invalid/privacy.php</loc></url>
-  <url><loc>https://example.invalid/terms.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/</loc></url>
+  <url><loc>http://fleetiq.fwh.is/features.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/fleet-vehicles.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/drivers-compliance.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/workshop.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/documents-reminders.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/reports.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/mobile.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/about.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/contact.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/privacy.php</loc></url>
+  <url><loc>http://fleetiq.fwh.is/terms.php</loc></url>
 </urlset>

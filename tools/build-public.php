@@ -4,9 +4,15 @@ if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
 require dirname(__DIR__) . '/includes/config.php';
 $files = require __DIR__ . '/public-files.php';
 $destination = $argv[1] ?? '';
-$prepare = ($argv[2] ?? '') === '--prepare';
-if (!$prepare && (SITE_URL === '' || parse_url(SITE_URL, PHP_URL_SCHEME) !== 'https')) {
-    fwrite(STDERR, "Set FLEETIQ_SITE_URL to the confirmed HTTPS base URL before building.\n");
+$options = array_slice($argv, 2);
+if (array_diff($options, ['--prepare', '--allow-http'])) {
+    fwrite(STDERR, "Supported options: --prepare, --allow-http (confirmed HTTP test host only).\n");
+    exit(1);
+}
+$prepare = in_array('--prepare', $options, true);
+$allowHttp = in_array('--allow-http', $options, true);
+if (!$prepare && (SITE_URL === '' || (parse_url(SITE_URL, PHP_URL_SCHEME) !== 'https' && !$allowHttp))) {
+    fwrite(STDERR, "Set FLEETIQ_SITE_URL to the confirmed HTTPS base URL, or explicitly use --allow-http for a confirmed HTTP test host.\n");
     exit(1);
 }
 // Accept a new external directory or a new directory beneath the dedicated build root.
@@ -48,5 +54,5 @@ $generated = [
 foreach ($generated as $file => $contents) {
     if (file_put_contents($destination . '/' . $file, $contents) === false) { throw new RuntimeException('Cannot write deployment file.'); }
 }
-echo "Public package created: " . $destination . "\nConfigure the SAME FLEETIQ_SITE_URL and authorised mail sender on the host.\nVerify host access rules, PHP settings, HTTPS and delivery before inviting visitors.\n";
+echo "Public package created: " . $destination . "\nUse the SAME FLEETIQ_SITE_URL on the host. Leave the sender unset until authorised.\nVerify host access rules, PHP settings and delivery. Enable HTTPS redirects only after SSL is confirmed.\n";
 if ($prepare) { echo "PREPARATION ONLY: empty sitemap and crawl-disallowed robots. Rebuild without --prepare after the domain is confirmed.\n"; }
