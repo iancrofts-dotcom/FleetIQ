@@ -1,5 +1,29 @@
 # Homepage refinement validation
 
+## Final restrained polish — 6 September 2026
+
+- This pass changes only `assets/css/site.css` and this record, preserving the earlier uncommitted refinement. No markup, copy, JavaScript, pages, dependencies, commits or pushes changed.
+- Benefits now use an understated `#f8fafb` background with white cards and existing borders. Benefits and Workshop bottom padding use `clamp(40px,5vw,64px)`: 90→64px on large desktops, 72→51.2px at 1024px, 60→40px at 768px, and 52→40px at 390px. Top padding and workflow content remain unchanged.
+- Desktop footer uses two columns: branding/tagline on the left; navigation above the UK statement on the right. Main padding is 44→28px; legal-row padding is 22→12px with vertical centring. Removed the old 140px statement width constraint. Existing mobile stacking remains, with main padding 32→24px, navigation margin 26→16px, statement margin 18→12px and legal padding 20→12px. Link targets remain at least 44px tall. Large-desktop footer height is approximately 249→197px; at 390px it is 331→283px.
+- Re-ran Chrome layout checks at 1920, 1680, 1440, 1366, 1201, 1200, 1199, 1101, 1100, 1099, 1024, 769, 768, 767, 601, 600, 599, 481, 480, 479, 390 and 320px. All 22 have no horizontal overflow or elements escaping page bounds. Hero dashboard remains unclipped and Android remains contained. Compared hero position/dimensions, workflow height and multi-device visual height with the start-of-pass CSS: unchanged. Benefits retain three columns on desktop and one through 600px. Final CTA height remains 52px, or 50px at narrow mobile widths.
+- Inspected Chrome screenshots of desktop Benefits, Workshop-to-devices transition and CTA/footer, plus the 390px CTA/footer stack. Other section spacing was left alone.
+- CSS application, duplicate-ID checks, internal anchor targets, Menu state, Product disclosure, custom Escape handling, section-link closing and Book a Demo open/close passed at all 22 widths. Dialog focus restoration remains inconclusive in the virtual-time fixture at 390px; normal-browser keyboard testing remains necessary. `git diff --check` passed.
+- PHP is still unavailable on PATH; PHP lint was not run. These are front-end checks of the existing temporary HTML fixture with repository CSS/JS, not PHP execution. Cross-browser and real-device touch checks remain unperformed. Temporary evidence is under `%TEMP%/fleetiq-refinement-qa/polish-*`.
+
+## Targeted spacing refinement — 6 September 2026
+
+This section records the current pass; the sections below describe earlier work and its environment.
+
+- Changed `assets/css/site.css` and this validation record only. No pages, dependencies, commits or pushes added.
+- At 1101px and wider: hero top padding reduced from 40px to 28px; copy top padding from 28px to 12px; standalone FleetIQ bottom margin from 12px to 8px. The dashboard moves up 12px, copy content up 28px, and the main headline up 32px. The existing approximately 40/60 grid, top alignment and dashboard dimensions remain. No hero minimum height or viewport-height sizing was present.
+- At 600px and narrower: Benefits use `minmax(0,1fr)`, extending the existing 480px single-column rule. Benefits container has 18px side gutters; heading/intro children are constrained to the available width and may wrap naturally; card children may shrink within their grid. Existing icons, borders, radii and font sizes remain.
+- Headless Chrome layout checks: 1920, 1680, 1440, 1366, 1201, 1200, 1199, 1101, 1100, 1099, 1024, 769, 768, 767, 601, 600, 599, 481, 480, 479, 390 and 320px. Iframes have normal 15px vertical scrollbars; media queries use the requested viewport width.
+- All 22 widths: document scroll width equals client width; no visible elements escape horizontal page bounds; no dashboard descendants cross an overflow-clipping ancestor; Android stays inside the hero-product container. Dashboard widths match the before-change fixture. Benefits are one column through 600px; heading and intro remain inside the gutters. At 390px the headline remains 42.12px, dashboard metrics remain 2×2, and hero CTAs are 165×50px.
+- Visually inspected the 1680px desktop hero and 390px mobile hero/Benefits screenshots. Upcoming Dates retains its mobile layout and readable labels. The approved Android overlap remains.
+- All widths: scripted Menu state, Product open/Escape, menu Escape, section-link menu closing, matching anchor targets, and demo dialog opening/close-button checks passed. Dialog focus restoration was inconsistent in the virtual-time headless harness, so that check is inconclusive and needs a normal browser check. No navigation or JavaScript files changed.
+- PHP is unavailable on PATH and absent from checked common PHP/XAMPP locations. PHP lint was not run. Browser checks use the existing temporary, manually expanded HTML fixture with the actual repository CSS and JavaScript, not PHP output. PHP execution, trusted native dialog Escape, real touch input and other browsers remain unverified.
+- `git diff --check` passed. Temporary harnesses, measurements and screenshots are outside the repository under `%TEMP%/fleetiq-refinement-qa` (`spacing-*` and `interaction-*`).
+
 ## Scope and environment
 
 Reviewed index.php, every component and include, CSS, JavaScript, the favicon, robots.txt, sitemap.xml and existing documentation. Git status reports that this folder is not a Git repository, so Git diff/check is unavailable. PHP is unavailable; PHP lint has not passed or been run. No new website pages, dependencies, commits or pushes were added.

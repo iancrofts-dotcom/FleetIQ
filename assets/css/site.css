@@ -811,11 +811,19 @@ p {
   gap:23px;
 }
 
+.benefits {
+  background:#f8fafb;
+}
+
+.section.benefits,.section.workshop {
+  padding-bottom:clamp(40px,5vw,64px);
+}
+
 .benefit-card {
   padding:27px;
   border:1px solid var(--line);
   border-radius:var(--radius);
-  background:linear-gradient(125deg,#fff,#fcfdff);
+  background:#fff;
   transition:border-color .2s,box-shadow .2s;
 }
 
@@ -1537,11 +1545,15 @@ p {
 }
 
 .footer-main {
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:1fr auto;
   align-items:center;
-  gap:25px;
-  padding-block:44px;
+  gap:4px 48px;
+  padding-block:28px;
+}
+
+.footer-main > div {
+  grid-row:span 2;
 }
 
 .footer-main .brand {
@@ -1566,13 +1578,15 @@ p {
 }
 
 .footer-location {
+  justify-self:end;
   font-size:11px;
   color:#6c7c8c;
 }
 
 .footer-bottom {
   border-top:1px solid var(--line);
-  padding-block:22px;
+  padding-block:12px;
+  align-items:center;
   display:flex;
   justify-content:space-between;
   gap:15px;
@@ -1659,7 +1673,6 @@ dialog::backdrop {
     gap:20px;
   }
   .footer-location {
-    max-width:140px;
     line-height:1.7;
   }
   .chart-key {
@@ -2112,6 +2125,7 @@ dialog::backdrop {
     margin-top:25px;
   }
   .footer-main {
+    display:flex;
     flex-wrap:wrap;
     gap:25px;
   }
@@ -2517,11 +2531,11 @@ dialog::backdrop {
     font-size:29px;
   }
   .footer-main {
-    padding-block:32px;
+    padding-block:24px;
     display:block;
   }
   .footer-main nav {
-    margin-top:26px;
+    margin-top:16px;
     justify-content:space-between;
     font-size:13px;
     gap:12px;
@@ -2531,10 +2545,10 @@ dialog::backdrop {
   }
   .footer-location {
     display:block;
-    margin-top:18px;
+    margin-top:12px;
   }
   .footer-bottom {
-    padding-block:20px;
+    padding-block:12px;
     align-items:center;
     font-size:10px;
     gap:8px;
@@ -2659,11 +2673,17 @@ dialog::backdrop {
 
 /* Keep desktop copy near the dashboard top, independent of device height. */
 @media (min-width:1101px) {
-  .hero-copy {
+  .hero {
     padding-top:28px;
+  }
+  .hero-copy {
+    padding-top:12px;
   }
   .hero-copy > .eyebrow {
     margin-bottom:12px;
+  }
+  .hero-brand {
+    margin-bottom:8px;
   }
 }
 
@@ -3115,6 +3135,20 @@ body:has(dialog[open]) {
 @media (max-width:600px) {
   .hero-product {
     padding:0 0 34px;
+  }
+  .benefits .container {
+    width:calc(100% - 36px);
+  }
+  .benefits .section-heading > * {
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:break-word;
+  }
+  .benefit-grid {
+    grid-template-columns:minmax(0,1fr);
+  }
+  .benefit-card > * {
+    min-width:0;
   }
   .hero-product .dash-panels {
     grid-template-columns:minmax(0,1fr);
