@@ -8,6 +8,7 @@
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/site.css">
     <?php if (isset($productPage)): ?><link rel="stylesheet" href="assets/css/product.css"><?php endif; ?>
+    <?php if (isset($commercialPage)): ?><link rel="stylesheet" href="assets/css/commercial.css"><?php endif; ?>
     <script src="assets/js/site.js" defer></script>
 </head>
 <body>

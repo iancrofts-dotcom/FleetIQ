@@ -10,4 +10,6 @@
   <url><loc>https://example.invalid/documents-reminders.php</loc></url>
   <url><loc>https://example.invalid/reports.php</loc></url>
   <url><loc>https://example.invalid/mobile.php</loc></url>
+  <url><loc>https://example.invalid/about.php</loc></url>
+  <url><loc>https://example.invalid/contact.php</loc></url>
 </urlset>

@@ -85,4 +85,8 @@
     });
   }
   document.documentElement.classList.add('js');
+  // PRG returns to #enquiry; announce the server result after fragment navigation.
+  window.addEventListener('pageshow', () => {
+    document.querySelector('.enquiry-panel .form-feedback')?.focus({ preventScroll: true });
+  });
 })();

@@ -1,5 +1,51 @@
 # Homepage refinement validation
 
+## Phase 3 — About and Contact / Book a Demo — 6 September 2026
+
+### Scope and repository state
+
+Started in `C:/Users/iancr/FleetIQ`, branch `main`. The working tree initially contained the approved, uncommitted Phase 2 work; this was preserved. Phase 2 was committed externally during this pass (`60abe0a`). The unrelated `workshop.zip` deletion was not made or altered by this work. No commit or push was performed by the agent.
+
+Created `about.php`, `contact.php`, `assets/css/commercial.css`, `includes/enquiry.php`, `includes/enquiry-delivery.php`, `includes/contact-request.php` and `tests/enquiry-test.php`.
+
+Modified shared header/navigation/footer/demo CTA, the product-page CTA, the homepage demo link, config, shared JavaScript, sitemap and documentation. Approved homepage/product layouts and their stylesheets remain unchanged. The homepage change is only the demo href; shared navigation now has real About/Contact destinations. No framework, database, analytics, CAPTCHA, newsletter or additional commercial pages added.
+
+### Pages and conversion journey
+
+- About is product-led: the disconnected-records problem, overlapping operational responsibilities, relevant UK fleet sectors, five product principles and one connected fleet. It states FleetIQ is being developed around practical requirements and makes no corporate-history, customer or regulatory claims. It reuses existing icons, cards, spacing, colours and CTA; no new mockup was necessary.
+- Contact has a compact navy introduction, a white enquiry panel, relevant demo topics and an accurate four-step next-steps explanation. Required fields: name, company, email, phone and fleet size. Industry and the help/message field are optional. Fleet ranges end in 251+ to avoid overlapping the 101–250 range.
+- Every Book a Demo link now targets `contact.php`; the placeholder demo dialog is removed. Privacy/Terms remain labelled development notices. Privacy wording was corrected to acknowledge the form and its necessary security session cookie, without inventing a full policy or marketing consent.
+
+### Form architecture, delivery and security
+
+- `includes/config.php` holds the confirmed recipient `iancrofts@live.co.uk`. `FLEETIQ_DEMO_RECIPIENT` is an optional controlled override. `FLEETIQ_DEMO_FROM` has no invented default and must be a host-authorised fixed mailbox. `FLEETIQ_DEMO_TRANSPORT` supports `mail` or `disabled`.
+- Validation and message transport are separate. The PHP mail adapter is replaceable with authenticated SMTP later. From is fixed configuration, Reply-To is the validated visitor address, subject text is bounded RFC 2047 encoding, and the UTF-8 plain-text body is base64 transfer-encoded. All requested fields and a UTC timestamp are included. The full company name remains in the body even if its subject representation needs shortening.
+- Missing sender/invalid config/disabled transport returns false. A safe availability message is shown when configuration is incomplete. Mail failures/exceptions produce a generic error with safe values retained; no technical exception or mail configuration detail is shown. Success is created only when the adapter returns strict true, meaning transport acceptance rather than guaranteed inbox delivery.
+- Validation trims scalar UTF-8 input, enforces field limits and allowed select values, validates email/phone, and rejects control characters, arrays, unknown fields and malformed/oversized POST bodies. User output is escaped. The honeypot and constant-time CSRF comparison run before transport. CSRF tokens use 32 random bytes and rotate on success.
+- Only Contact starts a session. Cookies use HttpOnly, SameSite=Lax and Secure when HTTPS is reported by PHP. Responses are no-store. POST uses HTTP 303 PRG for both success and errors; GET cannot fabricate success. Safe failure values are one-time session state and expire logically after 30 minutes. Private session storage, HTTPS forwarding and physical session retention remain hosting responsibilities.
+
+### Tests actually run
+
+- PHP 8.4.25 lint: all 24 PHP files passed, including the CLI-only test file.
+- `php tests/enquiry-test.php`: 48 checks passed with fake transport callbacks; no messages sent. Includes required/optional fields, malformed input, UTF-8/control characters, length limits, selects, honeypot, CSRF, header injection, failure/exception handling, output escaping and encoded message construction.
+- Local HTTP tests: 36 checks passed against the actual application with missing sender configuration. Covered required fields, bad email, CSRF, honeypot, arrays, injection, overlong/oversized requests, escaped preserved values, generic delivery failure, method 405 handling and one-time PRG state. No delivery attempted to the real recipient.
+- Isolated PHP server plus a loopback-only SMTP sink: 10 checks passed. Config used reserved `example.invalid` sender/recipient addresses only. SMTP acceptance produced the requested confirmation and cleared personal values; success flashed once and rotated CSRF; replay was rejected. SMTP rejection produced a generic failure and retained values. Captured message headers/body contained the expected test data, fixed From, validated Reply-To and UTC timestamp. **No email was sent externally or to the confirmed real recipient.**
+- Browser matrix: all ten pages at 1920, 1680, 1440, 1366, 1201, 1200, 1101, 1100, 1024, 769, 768, 601, 600, 481, 480, 390 and 320px (170 cases). No horizontal overflow or elements outside horizontal bounds after correcting a mobile line-break whitespace issue. No duplicate IDs or missing assets. All ten pages return 200, have one H1 and unique title/description metadata. No old demo dialog or misrouted Book a Demo link remains.
+- Error layout checks at all nine requested widths plus 320px (10 cases): five required-field errors correctly associated, error-summary focus applied after PRG, no overflow. The Contact layout and form fields stack on mobile; inputs use 16px text and are at least 49px tall in the checked layout.
+- 60 real navigation cases: About, Contact and header Book a Demo from every page at 1440 and 390px reached the intended destination with mobile menu closed. Every page/fragment link and CSS/JS/icon reference resolves.
+- Trusted Chrome keyboard checks at 1440 and 390px: menu and Product disclosure activation, Tab into dropdown, Escape, form label/field order, visible focus and privacy-dialog open/Escape/focus restoration passed. PRG error focus initially lost to fragment navigation; a scoped `pageshow` handler now focuses the server-result panel. All ten subsequent error-state focus checks passed. No console/runtime errors captured in the new-page keyboard run.
+- New form input borders were adjusted to 3.29:1 against white; body text is 5.64:1 and error text 7.01:1 against white. Existing focus and reduced-motion rules are reused. Role/status feedback, required attributes, labels, autocomplete and error-describedby relationships are present. This is not a complete accessibility certification.
+- About/Contact canonical and OG URL checks passed with a configured sample subdirectory origin. Sitemap XML has all ten routes. With the live config still empty, canonical/OG URLs remain intentionally omitted and the sitemap retains its clearly documented reserved placeholder origin.
+- Reviewed desktop/mobile About and Contact screenshots and a mobile error state. `git diff --check` passed.
+
+### Production configuration and remaining limits
+
+The enquiry recipient is configured, but **real delivery is not yet enabled/verified**: provide `FLEETIQ_DEMO_FROM` and a host-supported mail transport, then verify real mailbox receipt. PHP mail may be disabled or unreliable on free hosting; README documents the adapter replacement path, authorised sender/domain requirements, and the distinction between transport acceptance and inbox delivery. No live recipient test was performed.
+
+Configure the public origin/sitemap/robots, HTTPS/error handling and private session storage. Complete operator/privacy/terms and retention arrangements before public collection. No response time is promised. Firefox/Safari, real devices, screen readers and a full accessibility/zoom audit remain untested. The confirmation was verified against a local SMTP sink, not a production provider.
+
+Temporary evidence is under `%TEMP%/fleetiq-phase3-qa`. The two production page stylesheets from earlier phases were not redesigned. No commits or pushes were made.
+
 ## Final Phase 2 pre-commit QA — 6 September 2026
 
 **Result: suitable to commit as the approved Phase 2 implementation. No application-code correction was required. Only this validation record changed during this QA pass.** The existing uncommitted Phase 2 files remain intact; no commit or push was performed.

@@ -12,7 +12,7 @@
         </div>
     </details>
     <a href="features.php">Features</a>
-    <a href="./#about">About</a>
-    <a href="./#contact">Contact</a>
-    <a class="button button-small" href="#demo" data-dialog="demo">Book a Demo <?php icon('arrow'); ?></a>
+    <a href="about.php">About</a>
+    <a href="contact.php">Contact</a>
+    <a class="button button-small" href="contact.php">Book a Demo <?php icon('arrow'); ?></a>
 </nav>

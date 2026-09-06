@@ -16,7 +16,7 @@ require __DIR__ . '/header.php';
                 <h1><?= escape($page['heading']) ?></h1>
                 <p class="product-lead"><?= escape($page['intro']) ?></p>
                 <div class="hero-actions">
-                    <a class="button" href="#demo" data-dialog="demo">Book a Demo <?php icon('arrow'); ?></a>
+                    <a class="button" href="contact.php">Book a Demo <?php icon('arrow'); ?></a>
                     <a class="button button-outline" href="#capabilities"><?= $productPage === 'features' ? 'Explore the features' : 'Explore the capabilities' ?> <?php icon('arrow'); ?></a>
                 </div>
                 <div class="hero-platforms"><span><?php icon('desktop'); ?> Windows</span><span><?php icon('globe'); ?> Web</span><span><?php icon('phone'); ?> Android</span></div>
