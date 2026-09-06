@@ -1,0 +1,747 @@
+{
+  "features": {
+    "nav": "Features",
+    "icon": "grid",
+    "title": "Fleet Management System Features | FleetIQ",
+    "description": "Explore FleetIQ fleet management system features for vehicles, drivers, compliance, workshop tasks, documents and reporting on Windows, Web and Android.",
+    "eyebrow": "THE FLEETIQ PLATFORM",
+    "heading": "Everything you need to see your fleet clearly.",
+    "intro": "Bring vehicles, drivers, compliance, documents and workshop activity together in one practical fleet-management system.",
+    "section": "Connected records. A clearer working day.",
+    "sectionIntro": "Follow the work from the vehicle record to the people, dates and jobs connected to it.",
+    "visual": "overview",
+    "visualTitle": "Fleet overview",
+    "visualIntro": "Your operational priorities in one place",
+    "fields": [
+      [
+        "Vehicles",
+        "Records & assignments"
+      ],
+      [
+        "Compliance",
+        "Upcoming requirements"
+      ],
+      [
+        "Workshop",
+        "Repairs in progress"
+      ],
+      [
+        "Documents",
+        "Records & expiry dates"
+      ]
+    ],
+    "rows": [
+      [
+        "FQ26 ABC",
+        "MOT · 18 Sep 2026",
+        "Due soon"
+      ],
+      [
+        "FQ24 DEF",
+        "Repair job · Brakes",
+        "In progress"
+      ],
+      [
+        "Example driver",
+        "Licence review",
+        "To review"
+      ]
+    ],
+    "cards": [
+      [
+        "vehicle",
+        "Fleet & Vehicles",
+        "Understand each vehicle, its assigned driver and the work recorded against it.",
+        "fleet-vehicles.php"
+      ],
+      [
+        "users",
+        "Drivers",
+        "Keep driver information and vehicle assignments together.",
+        "drivers-compliance.php"
+      ],
+      [
+        "shield",
+        "Compliance",
+        "See the requirements and dates relevant to your operation.",
+        "drivers-compliance.php"
+      ],
+      [
+        "calendar",
+        "Calendar & Reminders",
+        "Bring MOTs, services and renewal dates into view.",
+        "documents-reminders.php"
+      ],
+      [
+        "document",
+        "Documents",
+        "Keep certificates and supporting records with the vehicle or driver.",
+        "documents-reminders.php"
+      ],
+      [
+        "tool",
+        "Workshop",
+        "Follow workshop activity from inspection to completion.",
+        "workshop.php"
+      ],
+      [
+        "inspection",
+        "Digital Inspections",
+        "Give drivers a consistent set of checks to work through.",
+        "workshop.php"
+      ],
+      [
+        "check",
+        "Defects & Repairs",
+        "Connect reported defects to repair jobs and their outcomes.",
+        "workshop.php"
+      ],
+      [
+        "chart",
+        "Reports",
+        "Review vehicle history, outstanding work and workshop activity.",
+        "reports.php"
+      ],
+      [
+        "lock",
+        "User Permissions",
+        "Manage access for the people using your fleet system.",
+        ""
+      ],
+      [
+        "desktop",
+        "Windows",
+        "Support office and operational fleet management.",
+        "mobile.php"
+      ],
+      [
+        "globe",
+        "Web",
+        "Access fleet information through a browser where appropriate.",
+        "mobile.php"
+      ],
+      [
+        "phone",
+        "Android",
+        "Support inspections and mobile operational tasks.",
+        "mobile.php"
+      ]
+    ],
+    "workflowTitle": "Start with a record. Follow the work.",
+    "workflowIntro": "Connected information helps teams understand the next task and the context behind it.",
+    "steps": [
+      [
+        "vehicle",
+        "Find the record",
+        "Start with the vehicle or driver you need."
+      ],
+      [
+        "calendar",
+        "Review what is due",
+        "Check dates, documents and outstanding work."
+      ],
+      [
+        "chart",
+        "Follow the outcome",
+        "Return to the history as work progresses."
+      ]
+    ],
+    "related": [
+      "fleet-vehicles",
+      "workshop",
+      "mobile"
+    ]
+  },
+  "fleet-vehicles": {
+    "nav": "Fleet & Vehicles",
+    "icon": "vehicle",
+    "title": "Vehicle Fleet Management Software | FleetIQ",
+    "description": "Keep vehicle records, assignments, MOT and service dates, documents and history together with FleetIQ vehicle fleet management software.",
+    "eyebrow": "FLEET & VEHICLES",
+    "heading": "Keep every vehicle record in one place.",
+    "intro": "Quickly understand what a vehicle is, who it is assigned to, what is due and what activity has taken place.",
+    "section": "The detail behind every vehicle.",
+    "sectionIntro": "Bring the everyday reference information and the next action into the same working view.",
+    "visual": "record",
+    "visualTitle": "Vehicle details",
+    "visualIntro": "FQ26 ABC · Ford Transit",
+    "fields": [
+      [
+        "Registration",
+        "FQ26 ABC"
+      ],
+      [
+        "Fleet number",
+        "V-014"
+      ],
+      [
+        "Make / model",
+        "Ford Transit"
+      ],
+      [
+        "Assigned driver",
+        "Example driver"
+      ]
+    ],
+    "rows": [
+      [
+        "MOT",
+        "18 Sep 2026",
+        "Due soon"
+      ],
+      [
+        "Service",
+        "22 Oct 2026",
+        "Scheduled"
+      ],
+      [
+        "Vehicle document",
+        "MOT certificate",
+        "On file"
+      ]
+    ],
+    "cards": [
+      [
+        "vehicle",
+        "A complete vehicle record",
+        "Keep registration, fleet number and make/model easy to find."
+      ],
+      [
+        "users",
+        "Clear assignments",
+        "See the driver assigned to a vehicle alongside its record."
+      ],
+      [
+        "calendar",
+        "MOT and service dates",
+        "Review upcoming dates so the next job can be planned."
+      ],
+      [
+        "document",
+        "Documents in context",
+        "Keep vehicle documents with the vehicle they belong to."
+      ],
+      [
+        "chart",
+        "A traceable history",
+        "Review inspections, repairs and recorded vehicle activity."
+      ],
+      [
+        "grid",
+        "Find the right vehicle",
+        "Use search and filtering to move from the fleet overview to the record you need."
+      ]
+    ],
+    "workflowTitle": "From fleet overview to the next action.",
+    "workflowIntro": "A single record gives office and workshop teams a shared starting point.",
+    "steps": [
+      [
+        "grid",
+        "Find a vehicle",
+        "Search or filter the fleet overview."
+      ],
+      [
+        "vehicle",
+        "Review the detail",
+        "Check the assignment, documents and upcoming dates."
+      ],
+      [
+        "tool",
+        "Follow the activity",
+        "Review the work and vehicle history together."
+      ]
+    ],
+    "related": [
+      "drivers-compliance",
+      "documents-reminders",
+      "workshop"
+    ]
+  },
+  "drivers-compliance": {
+    "nav": "Drivers & Compliance",
+    "icon": "shield",
+    "title": "Driver Compliance Management Software | FleetIQ",
+    "description": "Manage driver records, vehicle assignments, licence information and important renewal dates with FleetIQ driver compliance management software.",
+    "eyebrow": "DRIVERS & COMPLIANCE",
+    "heading": "Keep driver information and important dates visible.",
+    "intro": "Bring driver records, vehicle assignments and relevant compliance dates together so your team can see what needs a closer look.",
+    "section": "Relevant records. Visible requirements.",
+    "sectionIntro": "Compliance requirements differ between organisations, roles and fleet types. FleetIQ helps operators manage the records relevant to their operation.",
+    "visual": "record",
+    "visualTitle": "Driver requirements",
+    "visualIntro": "Example driver · Assigned to FQ26 ABC",
+    "fields": [
+      [
+        "Record",
+        "Example driver"
+      ],
+      [
+        "Assigned vehicle",
+        "FQ26 ABC"
+      ],
+      [
+        "Driving licence",
+        "Review date recorded"
+      ],
+      [
+        "Supporting documents",
+        "Held with driver record"
+      ]
+    ],
+    "rows": [
+      [
+        "Driving licence",
+        "11 Sep 2026",
+        "To review"
+      ],
+      [
+        "CPC",
+        "20 Oct 2026",
+        "Scheduled"
+      ],
+      [
+        "Medical",
+        "15 Nov 2026",
+        "Scheduled"
+      ]
+    ],
+    "cards": [
+      [
+        "users",
+        "Driver records",
+        "Keep driver information and vehicle assignments connected."
+      ],
+      [
+        "document",
+        "Driving licence records",
+        "Keep licence documents and important dates in view."
+      ],
+      [
+        "calendar",
+        "CPC and medical dates",
+        "Manage renewal dates for the roles that require them."
+      ],
+      [
+        "shield",
+        "Role-specific requirements",
+        "Record DBS and taxi/private-hire licence requirements where relevant, with taxi plate records where applicable."
+      ],
+      [
+        "bell",
+        "Document expiry",
+        "See upcoming and overdue driver document dates."
+      ],
+      [
+        "grid",
+        "Compliance status",
+        "Review the requirements that need attention alongside the supporting record."
+      ]
+    ],
+    "workflowTitle": "Review the requirements that apply.",
+    "workflowIntro": "Use the relevant records to support your own compliance processes; recording a date does not guarantee legal compliance.",
+    "steps": [
+      [
+        "users",
+        "Start with the role",
+        "Identify the records relevant to the driver and operation."
+      ],
+      [
+        "document",
+        "Keep the evidence together",
+        "Record documents and their important dates."
+      ],
+      [
+        "calendar",
+        "Review upcoming dates",
+        "Plan reviews and renewals with the supporting information in view."
+      ]
+    ],
+    "related": [
+      "fleet-vehicles",
+      "documents-reminders",
+      "reports"
+    ]
+  },
+  "workshop": {
+    "nav": "Workshop",
+    "icon": "tool",
+    "title": "Fleet Workshop Management Software | FleetIQ",
+    "description": "Connect digital inspections, defects, repair jobs and workshop history with FleetIQ fleet workshop management software.",
+    "eyebrow": "INSPECTIONS, DEFECTS & REPAIRS",
+    "heading": "Take workshop activity from inspection to completion.",
+    "intro": "Connect the people carrying out checks with the people organising repairs, and keep a clear record of the work.",
+    "section": "Keep the job and its context together.",
+    "sectionIntro": "From a reported defect to a completed repair, give the workshop a practical view of what needs doing.",
+    "visual": "workshop",
+    "visualTitle": "Workshop job",
+    "visualIntro": "FQ24 DEF · Brake inspection",
+    "fields": [
+      [
+        "Source",
+        "Daily inspection"
+      ],
+      [
+        "Defect",
+        "Brake warning reported"
+      ],
+      [
+        "Priority",
+        "Review required"
+      ],
+      [
+        "Status",
+        "In progress"
+      ]
+    ],
+    "rows": [
+      [
+        "Inspection",
+        "Daily vehicle check",
+        "Recorded"
+      ],
+      [
+        "Repair job",
+        "Workshop review",
+        "In progress"
+      ],
+      [
+        "Completion",
+        "Outcome and history",
+        "Pending"
+      ]
+    ],
+    "cards": [
+      [
+        "inspection",
+        "Digital inspections",
+        "Use inspection templates to give checks a consistent structure."
+      ],
+      [
+        "bell",
+        "Defect records",
+        "Keep the reported issue connected to the inspection and vehicle."
+      ],
+      [
+        "tool",
+        "Repair jobs",
+        "Organise repair work with priorities and statuses in view."
+      ],
+      [
+        "users",
+        "Workshop activity",
+        "Review technician activity alongside the jobs being worked on."
+      ],
+      [
+        "check",
+        "Repair and inspection history",
+        "Keep completed outcomes connected to earlier inspections and repairs."
+      ],
+      [
+        "chart",
+        "Workshop reporting",
+        "Review completed and outstanding jobs to understand the work ahead."
+      ]
+    ],
+    "workflowTitle": "A connected workshop workflow.",
+    "workflowIntro": "Carry the context forward at each stage, from the first check to the recorded outcome.",
+    "steps": [
+      [
+        "inspection",
+        "Inspection",
+        "Start with a digital check"
+      ],
+      [
+        "bell",
+        "Defect",
+        "Record what needs work"
+      ],
+      [
+        "tool",
+        "Repair Job",
+        "Organise the repair"
+      ],
+      [
+        "check",
+        "Completion",
+        "Record the outcome"
+      ],
+      [
+        "chart",
+        "History / Reporting",
+        "Keep a traceable record"
+      ]
+    ],
+    "related": [
+      "mobile",
+      "fleet-vehicles",
+      "reports"
+    ]
+  },
+  "documents-reminders": {
+    "nav": "Documents & Reminders",
+    "icon": "document",
+    "title": "Fleet Document Management & Reminders | FleetIQ",
+    "description": "Keep vehicle and driver documents, certificates, expiry dates, MOT and service reminders together with FleetIQ.",
+    "eyebrow": "DOCUMENTS & REMINDERS",
+    "heading": "Keep documents and important dates where they belong.",
+    "intro": "Reduce reliance on spreadsheets, paper files, separate calendar reminders and disconnected folders by keeping records with the vehicles and drivers they relate to.",
+    "section": "The document and the date, together.",
+    "sectionIntro": "Give your team a clearer place to check the record, understand the deadline and plan the next step.",
+    "visual": "documents",
+    "visualTitle": "Documents & upcoming dates",
+    "visualIntro": "Vehicle and driver records",
+    "fields": [
+      [
+        "View",
+        "Upcoming dates"
+      ],
+      [
+        "Records",
+        "Vehicles & drivers"
+      ],
+      [
+        "Documents",
+        "Certificates & records"
+      ],
+      [
+        "Calendar",
+        "Renewals & planned work"
+      ]
+    ],
+    "rows": [
+      [
+        "FQ26 ABC · MOT",
+        "18 Sep 2026",
+        "Due soon"
+      ],
+      [
+        "FQ24 DEF · Service",
+        "22 Sep 2026",
+        "Due soon"
+      ],
+      [
+        "Example driver · Licence",
+        "31 Aug 2026",
+        "Overdue"
+      ]
+    ],
+    "cards": [
+      [
+        "vehicle",
+        "Vehicle documents",
+        "Keep certificates and supporting documents alongside the vehicle record."
+      ],
+      [
+        "users",
+        "Driver documents",
+        "Keep driver documents with the person and role they relate to."
+      ],
+      [
+        "calendar",
+        "MOT and service reminders",
+        "Bring maintenance and testing dates into your planning."
+      ],
+      [
+        "shield",
+        "Driver compliance dates",
+        "Keep relevant licence, qualification and review dates visible."
+      ],
+      [
+        "bell",
+        "Due soon and overdue",
+        "Distinguish dates coming up from records that need attention now."
+      ],
+      [
+        "document",
+        "Document expiry",
+        "Review expiry dates alongside the supporting document and calendar."
+      ]
+    ],
+    "workflowTitle": "Less searching. More context.",
+    "workflowIntro": "Reminders support planning; operators still need to review requirements and carry out the necessary work.",
+    "steps": [
+      [
+        "document",
+        "Keep the document",
+        "Place the record with its vehicle or driver."
+      ],
+      [
+        "calendar",
+        "Record the date",
+        "Keep renewals and expiry dates in view."
+      ],
+      [
+        "check",
+        "Review and update",
+        "Return to the record when the next action is complete."
+      ]
+    ],
+    "related": [
+      "fleet-vehicles",
+      "drivers-compliance",
+      "reports"
+    ]
+  },
+  "reports": {
+    "nav": "Reports",
+    "icon": "chart",
+    "title": "Fleet Reporting Software | FleetIQ",
+    "description": "Review vehicle and inspection history, repair jobs, technician activity and compliance information with FleetIQ fleet reporting software.",
+    "eyebrow": "REPORTS & HISTORY",
+    "heading": "Turn fleet activity into useful information.",
+    "intro": "Bring recorded vehicle, inspection and workshop activity into a clearer view of completed work, outstanding tasks and the history behind them.",
+    "section": "Useful information from everyday work.",
+    "sectionIntro": "Review the records your teams create as they inspect vehicles, manage repairs and maintain fleet information.",
+    "visual": "reports",
+    "visualTitle": "Workshop activity report",
+    "visualIntro": "Illustrative activity · September 2026",
+    "fields": [
+      [
+        "Report",
+        "Workshop activity"
+      ],
+      [
+        "Period",
+        "September 2026"
+      ],
+      [
+        "Scope",
+        "Repair jobs"
+      ],
+      [
+        "View",
+        "Completed & outstanding"
+      ]
+    ],
+    "rows": [
+      [
+        "FQ26 ABC",
+        "Inspection · Example technician",
+        "Completed"
+      ],
+      [
+        "FQ24 DEF",
+        "Repair job · Example technician",
+        "In progress"
+      ],
+      [
+        "FQ25 GHI",
+        "Workshop review",
+        "Outstanding"
+      ]
+    ],
+    "cards": [
+      [
+        "vehicle",
+        "Vehicle history",
+        "Review the activity recorded against individual vehicles."
+      ],
+      [
+        "inspection",
+        "Inspection history",
+        "Look back at completed checks and their recorded outcomes."
+      ],
+      [
+        "tool",
+        "Repair jobs",
+        "Understand the status of completed and outstanding repair work."
+      ],
+      [
+        "users",
+        "Technician activity",
+        "Review recorded technician and workshop activity."
+      ],
+      [
+        "shield",
+        "Compliance information",
+        "Bring relevant requirements and important dates into review."
+      ],
+      [
+        "chart",
+        "Workshop reporting",
+        "Use the recorded history to inform operational conversations and planning."
+      ]
+    ],
+    "workflowTitle": "From recorded work to a useful review.",
+    "workflowIntro": "Stay grounded in the activity and information held in your fleet records.",
+    "steps": [
+      [
+        "chart",
+        "Choose the area",
+        "Review vehicle, inspection or workshop information."
+      ],
+      [
+        "tool",
+        "Understand the status",
+        "Distinguish completed work from outstanding tasks."
+      ],
+      [
+        "document",
+        "Return to the history",
+        "Use the underlying records for context."
+      ]
+    ],
+    "related": [
+      "workshop",
+      "drivers-compliance",
+      "fleet-vehicles"
+    ]
+  },
+  "mobile": {
+    "nav": "Mobile & Multi-device",
+    "icon": "phone",
+    "title": "Mobile Fleet Management Software | FleetIQ",
+    "description": "Use FleetIQ on Windows, Web and Android for office fleet management, browser access and mobile tasks such as inspections.",
+    "eyebrow": "WINDOWS. WEB. ANDROID.",
+    "heading": "FleetIQ where the work happens.",
+    "intro": "One fleet. One system. One source of truth. Bring office and operational fleet tasks together around shared vehicle, driver and workshop records.",
+    "section": "The right place for the task.",
+    "sectionIntro": "Use Windows, Web and Android across the places your fleet work happens.",
+    "visual": "mobile",
+    "visualTitle": "One connected fleet",
+    "visualIntro": "Windows · Web · Android",
+    "fields": [],
+    "rows": [],
+    "cards": [
+      [
+        "desktop",
+        "Windows",
+        "For office and operational fleet management, from vehicle records to workshop oversight."
+      ],
+      [
+        "globe",
+        "Web",
+        "Access through a browser where appropriate, with fleet records in context."
+      ],
+      [
+        "phone",
+        "Android",
+        "For mobile fleet tasks such as inspections and operational activity."
+      ]
+    ],
+    "workflowTitle": "From the vehicle to the office.",
+    "workflowIntro": "Keep the inspection, reported issue and workshop activity connected to the same vehicle record.",
+    "steps": [
+      [
+        "phone",
+        "Carry out a check",
+        "Use Android for a digital vehicle inspection."
+      ],
+      [
+        "tool",
+        "Review the work",
+        "Bring reported defects into workshop activity."
+      ],
+      [
+        "desktop",
+        "Follow the record",
+        "Review the vehicle and its history from the office."
+      ]
+    ],
+    "related": [
+      "workshop",
+      "fleet-vehicles",
+      "features"
+    ]
+  }
+}

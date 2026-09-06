@@ -9,6 +9,6 @@ $pageDescription = $pageDescription ?? 'Fleet management software for UK busines
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
 <?php if (SITE_URL !== ''): ?>
-<link rel="canonical" href="<?= escape(rtrim(SITE_URL, '/') . '/') ?>">
-<meta property="og:url" content="<?= escape(rtrim(SITE_URL, '/') . '/') ?>">
+<link rel="canonical" href="<?= escape(rtrim(SITE_URL, '/') . '/' . ($pagePath ?? '')) ?>">
+<meta property="og:url" content="<?= escape(rtrim(SITE_URL, '/') . '/' . ($pagePath ?? '')) ?>">
 <?php endif; ?>

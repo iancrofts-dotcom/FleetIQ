@@ -1,5 +1,73 @@
 # Homepage refinement validation
 
+## Final Phase 2 pre-commit QA — 6 September 2026
+
+**Result: suitable to commit as the approved Phase 2 implementation. No application-code correction was required. Only this validation record changed during this QA pass.** The existing uncommitted Phase 2 files remain intact; no commit or push was performed.
+
+### Navigation and responsive checks
+
+- Rechecked the actual PHP-rendered homepage and seven product pages in Chrome at 1920, 1680, 1440, 1366, 1201, 1200, 1101, 1100, 1024, 769, 768, 601, 600, 481, 480, 390 and 320px: 136 page/viewport cases, including all nine requested widths.
+- No document horizontal overflow, visible elements outside horizontal bounds, conceptual-interface descendants crossing clipping ancestors, or overlapping siblings in hero layouts, card grids, workflow stages, record grids, UI headers/rows, CTA groups and footer rows. Heading wrapping stays within the layout; cards and workflows retain their approved mobile stacking. CTA targets remain 50–52px tall, and all three product-page platform labels remain visible.
+- All internal links, relative paths, fragment targets and asset references resolve. Features links target `features.php`; header/footer logos target the homepage; About/Contact remain homepage section links. Footer Privacy and Terms dialogs open and close on every product page.
+- Executed every one of the six Product destinations from all eight starting pages at 1440 and 390px: 96 real cross-page navigation cases passed. Each case also checked the closed menu on arrival, return to the homepage About anchor and header Book a Demo opening/closing. The responsive matrix separately checks mobile Menu, Product disclosure, custom Escape and final CTA demo behaviour.
+
+### Accessibility, consistency and spacing
+
+- Used Chrome DevTools Protocol trusted key input on every product page at 1440 and 390px (14 cases). Passed: mobile Menu activation with Enter, Product activation with Enter, Tab to its first link, visible keyboard focus, Escape closing Product and restoring summary focus, mobile menu Escape restoring toggle focus, keyboard demo opening, native dialog Escape and focus restoration to the initiating hero CTA. Tab did not focus background page controls while the modal was open. Native Chrome may move focus through browser chrome when tabbing past the dialog's only control; this is not an application focus escape.
+- This trusted-input check resolves the earlier inconclusive hero-demo Escape/focus result for the tested Chrome cases. It does not certify every browser or every possible modal opener.
+- All links/buttons/disclosures have text or an accessible label. ARIA controls/labelled-by references resolve, there are no duplicate IDs, and main-content H1/H2/H3 levels have no skipped levels. Native details/summary and dialog semantics remain in use. Decorative icons retain `aria-hidden`.
+- Emulated reduced motion on all seven pages: smooth scrolling becomes `auto` and button transition duration becomes zero.
+- Sampled text contrast ratios: white CTA text 5.27:1; body on white 5.64:1; UI muted text 5.25:1; blue/amber/red/green status labels 4.93/5.33/5.01/4.88:1; conceptual caption on navy 8.28:1; Android kicker 5.10:1. All sampled pairs exceed 4.5:1. These samples are not a complete WCAG audit of every gradient or state.
+- Shared hero structure, typography, card borders/radii, CTA styles, palette, conceptual UI and footer remain consistent. Inspected spacing rules and rendered sections: product sections have no fixed/minimum section heights creating blank areas; spacing comes from approved padding and content. No spacing or aesthetic changes made.
+
+### Product accuracy, SEO and technical results
+
+- Audited the seven entry points, shared product templates and complete page-content JSON. No unsupported DVSA approval, guaranteed-compliance, tracking/GPS, telematics, routing, fuel, predictive/AI, integration, customer, testimonial or savings claims. The only guarantee-related match explicitly says recording a date does **not** guarantee legal compliance. No new DVSA statement is made by the Phase 2 content. The existing homepage's guidance wording remains unchanged.
+- Each conceptual view retains its visible conceptual/illustrative caption; illustrative records and inspection progress are not represented as customers, performance statistics or live application screenshots.
+- All eight pages have unique titles and descriptions, one H1, working internal links and Open Graph metadata. Configured canonical/OG URL tests passed for each product route, including an origin with a subdirectory. With the current empty configuration these URL tags are deliberately omitted.
+- Sitemap XML parses and lists the homepage plus all seven existing product files. `robots.txt` has valid User-agent/Allow directives. Both remain deployment templates where the public origin is required: the sitemap uses `https://example.invalid`, and robots has no absolute Sitemap directive yet.
+- PHP 8.4.25 lint passed for all 18 PHP files. All page and asset HTTP requests checked returned 200. No JavaScript console errors, browser log errors or uncaught runtime exceptions were captured while loading the seven pages through CDP. `git diff --check` passed.
+
+### Limitations and commit readiness
+
+Safe to commit the approved Phase 2 work. Public launch still requires the confirmed origin in config/sitemap/robots, a monitored demo email and approved operator/legal content. Demo remains the existing development notice; the interfaces remain conceptual. Firefox/Safari, real-device touch, screen readers and a complete zoom/contrast audit remain untested. No production-readiness or full accessibility-conformance claim is made.
+
+Evidence is outside the repository under `%TEMP%/fleetiq-phase2-final-qa` (responsive, navigation, keyboard, semantics, console and baseline file-hash records). Baseline hashes confirmed that application files were unchanged during this pass. The temporary PHP runtime/server is from the preceding Phase 2 validation.
+
+## Phase 2 — Core product pages — 6 September 2026
+
+### Scope and implementation
+
+Started on `main` in `C:/Users/iancr/FleetIQ` with a clean working tree. Created the seven requested PHP entry points, `components/product-page.php`, `components/product-visual.php`, `includes/product-pages.json` and `assets/css/product.css`. Updated shared header/navigation/footer, cross-page anchor focus handling, SEO, sitemap and documentation. `index.php` and `assets/css/site.css` are unchanged. No commits, pushes, frameworks or application dependencies added.
+
+Features groups ten functional areas separately from the three platforms. Vehicle Details, driver requirements, workshop job progress, documents/upcoming dates and a workshop activity report use a shared readable record/row design. Mobile uses a monitor, browser record and Android inspection view. Every new visual has a visible conceptual/illustrative figcaption. Capability cards, related links and final demo CTA reuse the established design; Workshop retains the five numbered stages and green completion/history styling. Cards and workflows stack on mobile. No unsupported tracking, analytics, customer or compliance claims were introduced.
+
+### Runtime and static validation
+
+- Downloaded official portable PHP 8.4.25 NTS x64 into `%TEMP%/fleetiq-phase2-qa/php`; verified the archive SHA-256 against the official Windows PHP release manifest. It is a QA tool outside the repository, not an application dependency or global installation.
+- All 18 PHP files passed `php -l`. All eight pages returned HTTP 200 from the PHP development server with no PHP warnings or errors detected in rendered output.
+- All eight pages have unique titles/descriptions and exactly one H1. Open Graph title/description are sourced from the same page metadata. A separate PHP check with a configured sample subdirectory origin passed page-specific canonical and OG URL assertions for all seven product pages. Live preview configuration remains empty and emits neither URL tag.
+- All internal page/fragment targets resolve; all referenced CSS, JS and image assets returned HTTP 200. No duplicate IDs found.
+- Sitemap XML parses, contains all eight routes, and all corresponding files exist. The reserved `https://example.invalid` origin explicitly marks it as a deployment template. Replace it with the confirmed `SITE_URL` before publishing/submitting and set the robots sitemap URL.
+- `git diff --check` passed. Homepage markup and shared stylesheet have no diff.
+
+### Chrome responsive and interaction validation
+
+Tested the actual PHP application, not a manually expanded fixture: all eight pages at 1920, 1680, 1440, 1366, 1201, 1200, 1101, 1100, 1024, 769, 768, 601, 600, 481, 480, 390 and 320px (136 page/viewport checks). Frames use normal vertical scrollbars, which reduce content width by 15px.
+
+Passed across the matrix: document scroll width equals client width; no visible elements escape horizontal bounds; no product-visual/dashboard descendants cross clipping ancestors; CSS applies; IDs are unique; conceptual captions exist; Menu opens/closes; Product disclosure opens and closes on Escape; menu closes on Escape; final Book a Demo opens and closes its dialog. Product-page capability links reach their sections. Windows, Web and Android remain visible at every tested product-page width. Final CTA buttons remain 50–52px tall. Narrow-mobile capability cards use one column and workshop stages stack.
+
+Additionally tested real cross-page clicks from all eight starting pages at 1440 and 390px (16 navigation cases): Product → Workshop loads the requested page with the menu closed; About returns to the homepage section; header Book a Demo opens its dialog and closes the mobile menu. All passed.
+
+Inspected desktop hero screenshots for the platform, records, documents, reports and device compositions, plus mobile hero, capability and workshop workflow views. Screenshot review led to top-aligned internal hero copy, a more compact device composition, a separate Features platform group and an internal-page override for the inherited rule that hid the final platform label on mobile.
+
+### Remaining limitations
+
+- Production origin, monitored demo email and operator/legal content are still unset. Demo booking remains the existing development notice; no new submission system was requested.
+- Conceptual interfaces are illustrative, static HTML, not working software controls or exact application screenshots. Compliance wording is scoped to relevant operations and does not guarantee compliance.
+- Headless Chrome checks are not real-device or cross-browser certification. Trusted keyboard/native dialog Escape, screen readers, zoom and dialog focus restoration still need normal-browser testing. Prior headless focus-restoration results were inconsistent; this pass does not claim to resolve them.
+- Temporary server, PHP runtime, harnesses, rendered measurements and screenshots are under `%TEMP%/fleetiq-phase2-qa`. Historical validation sections below describe earlier environments and do not supersede this PHP-enabled pass.
+
 ## Final restrained polish — 6 September 2026
 
 - This pass changes only `assets/css/site.css` and this record, preserving the earlier uncommitted refinement. No markup, copy, JavaScript, pages, dependencies, commits or pushes changed.

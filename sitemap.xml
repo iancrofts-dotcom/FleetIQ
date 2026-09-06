@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Deployment template: add the homepage URL when the public domain is confirmed.
-     <url><loc>https://YOUR-PRODUCTION-DOMAIN/</loc></url>
--->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>
+<!-- Deployment template only. Replace https://example.invalid with the confirmed
+     SITE_URL origin before publishing or submitting this sitemap. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.invalid/</loc></url>
+  <url><loc>https://example.invalid/features.php</loc></url>
+  <url><loc>https://example.invalid/fleet-vehicles.php</loc></url>
+  <url><loc>https://example.invalid/drivers-compliance.php</loc></url>
+  <url><loc>https://example.invalid/workshop.php</loc></url>
+  <url><loc>https://example.invalid/documents-reminders.php</loc></url>
+  <url><loc>https://example.invalid/reports.php</loc></url>
+  <url><loc>https://example.invalid/mobile.php</loc></url>
+</urlset>

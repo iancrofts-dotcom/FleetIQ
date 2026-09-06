@@ -21,7 +21,7 @@
       if (!link) return;
       closeMenu();
       // Move keyboard focus out of a menu that is about to become hidden.
-      if (!link.dataset.dialog && link.hash) {
+      if (!link.dataset.dialog && link.hash && link.pathname === location.pathname) {
         const target = document.getElementById(link.hash.slice(1));
         if (target) {
           if (!target.hasAttribute('tabindex')) {
